@@ -1,0 +1,133 @@
+{% extends '@Resources/layout.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block styles %}
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="swiper h-[100vh] z-1">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide relative">
+                <img class="object-cover h-screen w-full brightness-50" src="{{ asset('images/banner.jpg') }}" alt="Keilla & Matheus">
+                <div class="px-2 md:px-0 absolute top-0 left-0 bottom-0 w-full h-full flex flex-col items-center justify-center">
+                    <h1 class="text-slate-50 text-4xl md:text-6xl mb-3 max-w-[265px] md:max-w-6xl marcellus text-center">Keilla Carolina & Matheus</h1>
+                    <p class="mb-8"><smal class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</smal></p>
+                    <div class="flex gap-2 md:gap-4" >
+                        <a class="text-sm md:text-lg bg-[#f9f3f46b] rounded px-3 md:px-5 py-1 backdrop-blur-xs hover:bg-slate-100 transition duration-150 ease-in-out marcellus" href="{{ path('app_presence') }}">Confirmar Presença</a>
+                        <a class="text-sm md:text-lg bg-slate-100 hover:bg-gray-300 rounded px-3 md:px-5 py-1 backdrop-blur-xs transition duration-150 ease-in-out marcellus" href="{{ path('app_gift') }}">Lista de Presentes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide relative">
+                <img class="object-cover h-screen w-full brightness-50" src="{{ asset('images/banner.jpg') }}" alt="Keilla & Matheus">
+                <div class="px-2 md:px-0 absolute top-0 left-0 bottom-0 w-full h-full flex flex-col items-center justify-center ">
+                    <h1 class="text-slate-50 text-4xl md:text-6xl mb-3 max-w-[265px] md:max-w-6xl marcellus text-center">Keilla Carolina & Matheus</h1>
+                    <p class="mb-8"><smal class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</smal></p>
+                    <div class="flex gap-2 md:gap-4" >
+                        <a class="text-sm md:text-lg bg-[#f9f3f46b] rounded px-3 md:px-5 py-1 backdrop-blur-xs hover:bg-slate-100 marcellus" href="{{ path('app_presence') }}">Confirmar Presença</a>
+                        <a class="text-sm md:text-lg bg-slate-100 rounded px-3 md:px-5 py-1 backdrop-blur-xs marcellus" href="{{ path('app_gift') }}">Lista de Presentes</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+
+    <div class="py-16 bg-slate-100">
+        <div class="container m-auto px-2 text-center">
+            <h2 class="text-5xl mb-8 marcellus">Bem-vindos ao nosso grande dia!</h2>
+            <p class="text-xl max-w-4xl m-auto mb-16 marcellus">
+                É com imensa alegria que convidamos vocês para celebrar conosco o início da nossa nova jornada.
+                Sua presença tornará este momento ainda mais que especial e inesquecível.
+            </p>
+
+
+            <h4 class="mb-8">Faltam apenas...</h4>
+
+            <div class="flex items-center justify-center w-full gap-6 count-down-main">
+                <div class="timer">
+                    <div
+                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
+                        <h3
+                            class="countdown-element days font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-max text-center relative z-20"
+                        >
+                        </h3>
+
+                    </div>
+                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">dias</p>
+                </div>
+                <div class="timer">
+                    <div
+                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
+                        <h3
+                            class="countdown-element hours font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
+                        >
+                        </h3>
+
+                    </div>
+                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">horas</p>
+                </div>
+                <div class="timer">
+                    <div
+                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
+                        <h3
+                            class="countdown-element minutes font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
+                        >
+                        </h3>
+
+                    </div>
+                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">minutos</p>
+                </div>
+                <div class="timer">
+                    <div
+                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
+                        <h3
+                            class="countdown-element seconds font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
+                        >
+                        </h3>
+
+                    </div>
+                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">segundos</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="my-16">
+
+        <div class="block md:flex gap-12 container m-auto px-2">
+
+            <div class="rounded bg-slate-100 items-center sm:columns-4xl py-12 px-6 shadow-lg">
+                <h2 class="mb-4 marcellus font-bold">Data & Horário</h2>
+                <p class="mb-4 marcellus">08 de Novembro de 2025</p>
+                <p class="mb-4 marcellus">10:00 - Cerimônia | 12h Restaurante</p>
+            </div>
+
+            <div class="rounded bg-slate-50 items-center sm:columns-4xl py-12 px-6 shadow-lg">
+                <h2 class="mb-4 marcellus font-bold">Local</h2>
+                <p class="mb-4 marcellus">R. Américo Ribeiro, s/n - Porto Velho, São Gonçalo - RJ, 24426-460</p>
+                <p class="mb-4 marcellus">BR-101 São Joaquim, Itaboraí - RJ, 24809-234</p>
+                <a class="marcellus underline" href="{{ path('app_information') }}">Ver Detalhes</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

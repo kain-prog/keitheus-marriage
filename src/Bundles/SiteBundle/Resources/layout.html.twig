@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    {% include '@Components/_head.html.twig' with { title: block('title') } %}
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+    {% include '@Components/header.html.twig' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include '@Components/_footer.html.twig' %}
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

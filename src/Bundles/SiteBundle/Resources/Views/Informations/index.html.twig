@@ -1,0 +1,138 @@
+{% extends '@Resources/layout.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block styles %}
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+{% endblock %}
+
+{% block content %}
+    <div class="pt-[72px] bg-gray-100 pb-20">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+            <h1 class="text-5xl text-center mb-6 marcellus">Informações do Evento</h1>
+            <p class="text-lg max-w-2xl mx-auto text-center marcellus mb-16">
+                Tudo o que você precisa saber para aproveitar nosso grande dia.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-between gap-5 mb-16">
+                <div class="w-full bg-slate-50 shadow py-12 px-4">
+                    <div class="text-center mb-3">
+                        <i class="fa-regular fa-clock text-3xl"></i>
+                    </div>
+                    <div class="flex items-center justify-center text-center gap-5 mb-8">
+                        <div class="mb-8">
+                            <h2 class="text-2xl">Cronograma do Dia</h2>
+                            <p class="text-md marcellus">Programação completa da cerimônia e restaurante.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+
+                        <div>
+                            <h6 class="text-lg marcellus">Cerimônia Religiosa</h6>
+                            <p class="mb-4 text-sm marcellus">Igreja - Nossa Senhora das Graças</p>
+                        </div>
+
+                        <div>
+                            <strong class="marcellus">10:00</strong>
+                        </div>
+
+                    </div>
+
+                    <hr class="mb-6 text-slate-300">
+
+                    <div class="flex justify-between items-center">
+
+                        <div>
+                            <h6 class="text-lg marcellus">Restaurante</h6>
+                            <p class="mb-4 text-sm marcellus">Dimattoni</p>
+                        </div>
+
+                        <div>
+                            <strong class="marcellus">12:00</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="w-full bg-slate-50 shadow py-12 px-4">
+                    <div class="text-center mb-3">
+                        <i class="fa-solid fa-location-dot text-3xl"></i>
+                    </div>
+                    <div class="flex items-center justify-center gap-5 mb-8">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl marcellus">Local & Endereço</h2>
+                            <p class="text-md marcellus">Como chegar na Igreja e no Restaurante.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-5 mb-8">
+                        <div class="text-end flex h-50 lg:h-auto justify-between flex-col w-full">
+                            <div>
+                                <h6 class="marcellus mb-2 text-md font-semibold">Igreja</h6>
+                                <p class="marcellus">R. Américo Ribeiro, s/n</p>
+                                <p class="marcellus">Porto Velho, São Gonçalo - RJ</p>
+                                <p class="marcellus mb-3">CEP: 24426-460</p>
+                            </div>
+                            <a class="w-full ms-auto mr-0 my-0 text-center text-slate-50 py-1 block border rounded bg-gray-600 max-w-[220px] hover:bg-gray-500 transition duration-150" href="https://maps.app.goo.gl/LtynMMCyL9G2df1h8" target="_blank">Ver no maps</a>
+                        </div>
+
+                        <div class="w-full h-50 lg:h-auto flex flex-col justify-between">
+                            <div>
+                                <h6 class="marcellus mb-2 text-md font-semibold">Restaurante</h6>
+                                <p class="marcellus">BR-101</p>
+                                <p class="marcellus">São Joaquim, Itaboraí - RJ</p>
+                                <p class="marcellus mb-3">CEP: 24809-234</p>
+                            </div>
+                            <a class="w-full text-center text-slate-50 py-1 block border rounded bg-gray-600 max-w-[220px] hover:bg-gray-500 transition duration-150" href="https://maps.app.goo.gl/ZQ8hhRSevaJFWNjS7" target="_blank">Ver no maps</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16 overflow-auto w-full lg:overflow-visible">
+
+                <div class="w-[1280px] lg:w-full flex justify-between gap-8 mb-8">
+                    <div class="w-[384px] bg-slate-50 rounded shadow flex flex-col items-center justify-center py-12 px-18">
+                        <i class="fa-solid fa-car-side mb-3 text-2xl"></i>
+                        <h4 class="text-lg font-semibold marcellus">Estacionamento</h4>
+                        <p class="text-md marcellus text-center">Estacionamento gratuito no local.</p>
+                    </div>
+
+                    <div class="w-[384px] bg-slate-50 rounded shadow flex flex-col items-center justify-center py-12 px-18">
+                        <i class="fa-solid fa-utensils  mb-3 text-2xl"></i>
+                        <h4 class="text-lg font-semibold marcellus">Cardápio</h4>
+                        <p class="text-md marcellus text-center">Almoço servido com opções...</p>
+                    </div>
+
+                    <div class="w-[384px] bg-slate-50 rounded shadow flex flex-col items-center justify-center py-12 px-18">
+                        <i class="fa-solid fa-camera mb-3 text-2xl"></i>
+                        <h4 class="text-lg font-semibold marcellus">Fotos</h4>
+                        <p class="text-md marcellus text-center">Fotógrafo profissional e álbum digital compartilhado.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w-full bg-slate-50 shadow py-12 px-4">
+                <h2 class="text-2xl marcellus text-center mb-8">Informações Importantes</h2>
+
+                <ul class="w-full max-w-3xl m-auto">
+                    <li class="mb-5 marcellus">Após a cerimônia, nos reuniremos no restaurante Dimattoni para celebrar juntos.
+                        Cada convidado será responsável pela sua própria consumação.</li>
+                    <li class="mb-5 marcellus">A cerimônia terá início pontualmente às 10:00, pedimos que cheguem com alguns minutos de antecedência.</li>
+                    <li class="mb-5 marcellus">Caso precise de informações adicionais, entre em contato conosco pelo WhatsApp: <a class="underline" href="https://wa.me/+5521998956202">(21) 99895-6202 </a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,72 @@
+{% extends '@Resources/layout.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block styles %}
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="pt-[72px] bg-gray-100 pb-20">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+            <h1 class="text-5xl text-center mb-6 marcellus">Lista de Presentes</h1>
+            <p class="text-lg max-w-2xl mx-auto text-center marcellus mb-16">
+                Sua generosidade nos ajudará a construir nosso lar com muito amor.
+                Cada presente tem um significado especial para nós.
+            </p>
+
+
+            <div id="categories" class="">
+                {% include '@Components/categories.html.twig' %}
+            </div>
+
+
+            <div id="products" class="">
+                {% include '@Components/products.html.twig' %}
+            </div>
+
+
+            <div class="bg-slate-50 py-12 mb-8">
+                <h3 class="text-center marcellus font-semibold mb-8">Você também pode contribuir diretamente via PIX:</h3>
+
+                <div data-controller="copy" class="flex flex-col items-center bg-white shadow-md rounded-xl p-6 max-w-md mx-auto">
+                    <img src="{{ asset('images/pix-qrcode.png') }}" alt="QR Code Pix" class="w-40 h-40 mb-4">
+                    <p class="text-gray-700 font-medium mb-2">Use o QR Code ou copie o código abaixo:</p>
+
+                    <input
+                        data-copy-target="pixCode"
+                        type="text"
+                        value="00020126360014BR.GOV.BCB.PIX0114+55219989562025204000053039865802BR5924Matheus dos Santos Silva6009SAO PAULO62140510Qngvmp4HKM6304C0D1"
+                        readonly
+                        class="w-full p-2 border rounded mb-3 text-sm text-gray-600"
+                    >
+
+                    <button
+                        data-action="click->copy#copy"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-semibold">
+                        Copiar código PIX
+                    </button>
+
+                    <span data-copy-target="message" class="text-green-600 text-sm mt-2 hidden">✅ Código copiado!</span>
+                </div>
+
+                <div class="flex flex-col justify-center pt-8 gap-2">
+                    <h5 class="text-center marcellus font-semibold">Dúvidas</h5>
+                    <p class="text-center marcellus">Entre em contato pelo WhatsApp: <a class="underline" target="_blank" href="https://wa.me/+5521998956202">(21) 99895-6202 </a></p>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

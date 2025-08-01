@@ -1,0 +1,12 @@
+twig:
+    file_name_pattern: '*.twig'
+    paths:
+        '%kernel.project_dir%/src/Bundles': Bundles
+        '%kernel.project_dir%/templates': Templates
+        '%kernel.project_dir%/src/Bundles/SiteBundle/Resources': Resources
+        '%kernel.project_dir%/src/Bundles/SiteBundle/Resources/Views': Views
+        '%kernel.project_dir%/src/Bundles/SiteBundle/Resources/Components': Components
+
+when@test:
+    twig:
+        strict_variables: true
