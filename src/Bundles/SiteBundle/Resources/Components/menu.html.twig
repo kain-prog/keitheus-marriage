@@ -1,4 +1,4 @@
-<nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+<nav data-controller="mobile-menu" aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
     <div class="flex lg:flex-1">
         {% include '@Components/brand.html.twig' %}
     </div>
@@ -10,7 +10,7 @@
     </el-popover-group>
 
     <div class="flex lg:hidden">
-        <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-stone-50">
+        <button type="button" data-action="mobile-menu#open" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-stone-50">
             <span class="sr-only">Open main menu</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
                 <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -18,33 +18,29 @@
         </button>
     </div>
 
-{#    <el-dialog>#}
-        <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden w-full">
-            <div tabindex="0" class="fixed inset-0 focus:outline-none">
-                <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:ring-1 sm:ring-stone-900/10">
-                    <div class="flex items-center justify-between">
-
-                        {% include '@Components/brand.html.twig' %}
-
-                        <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-stone-700">
-                            <span class="sr-only">Close menu</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                            <div class="space-y-2 py-6">
-                                <a href="{{ path('app_home') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Início</a>
-                                <a href="{{ path('app_presence') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Confirmar Presença</a>
-                                <a href="{{ path('app_gift') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Lista de Presentes</a>
-                                <a href="{{ path('app_information') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Informações</a>
-                            </div>
+    <dialog data-mobile-menu-target="menu" id="mobile-menu" class="backdrop:bg-transparent lg:hidden w-full">
+        <div tabindex="0" class="fixed inset-0 focus:outline-none">
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:ring-1 sm:ring-stone-900/10">
+                <div class="flex items-center justify-between">
+                    {% include '@Components/brand.html.twig' %}
+                    <button type="button" data-action="mobile-menu#close" class="-m-2.5 rounded-md p-2.5 text-stone-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <a href="{{ path('app_home') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Início</a>
+                            <a href="{{ path('app_presence') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Confirmar Presença</a>
+                            <a href="{{ path('app_gift') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Lista de Presentes</a>
+                            <a href="{{ path('app_information') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 marcellus">Informações</a>
                         </div>
                     </div>
-                </el-dialog-panel>
+                </div>
             </div>
-        </dialog>
-{#    </el-dialog>#}
+        </div>
+    </dialog>
 </nav>
