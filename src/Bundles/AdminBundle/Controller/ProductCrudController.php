@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -75,6 +76,11 @@ class ProductCrudController extends AbstractCrudController
                 ->setFormTypeOption('attr', ['placeholder' => 'Selecione a categoria que o produto se enquadra.'])
                 ->hideOnIndex(),
 
+            TextField::new('sku', 'SKU: ')
+                ->setFormTypeOption('attr', ['placeholder' => '008'])
+                ->setHelp('Identificador do produto.')
+                ->setRequired(true),
+
             TextField::new('name', 'Nome: ')
                 ->setFormTypeOption('attr', ['placeholder' => 'Insira o nome do Produto.'])
                 ->setRequired(true),
@@ -85,11 +91,17 @@ class ProductCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->setRequired(false),
 
-            MoneyField::new('price', 'Preço')
+            MoneyField::new('price', 'Preço: ')
                 ->setFormTypeOption('attr', ['placeholder' => '1.000,00'])
                 ->setCurrency('BRL')
                 ->setNumDecimals(2)
                 ->setStoredAsCents(false)
+                ->setRequired(true),
+
+            UrlField::new('payment_url', 'Link de Pagamento: ')
+                ->setFormTypeOption('attr', ['placeholder' => 'https://linkdepagamento.com.br/produto/xyz'])
+                ->setHelp('Copie e cole o link de pagamento do produto.')
+                ->onlyOnForms()
                 ->setRequired(true),
 
             TextField::new('shortDescription', 'Resumo: ')
@@ -98,7 +110,16 @@ class ProductCrudController extends AbstractCrudController
 
             TextEditorField::new('description', 'Descrição: ')
                 ->setFormTypeOption('attr', ['placeholder' => 'Descreva o Produto.'])
+                ->onlyOnForms()
                 ->setRequired(false),
+
+            AssociationField::new('categories', 'Categorias')
+                ->formatValue(function ($value) {
+                    return implode(', ', $value->map(function ($category) {
+                        return $category->getName();
+                    })->toArray());
+                })
+                ->hideOnForm()
 
         ];
     }

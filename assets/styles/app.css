@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marcellus&display=swap');
 
 .marcellus {
     font-family: "Marcellus", serif;
+    font-style: normal;
+}
+
+.great-vibes {
+    font-family: "Great Vibes", cursive;
     font-style: normal;
 }

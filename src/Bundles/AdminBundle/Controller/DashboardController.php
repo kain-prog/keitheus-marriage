@@ -22,14 +22,19 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Html');
+            ->setTitle('Painel de Controle');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Convidados', 'fas fa-list', Guest::class);
-        yield MenuItem::linkToCrud('Categorias', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Produtos', 'fas fa-list', Product::class);
+        return [
+            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToCrud('Convidados', 'fas fa-people-group', Guest::class),
+
+            MenuItem::section('Presentes'),
+                MenuItem::linkToCrud('Categorias', 'fas fa-list', Category::class),
+                MenuItem::linkToCrud('Produtos', 'fas fa-gifts', Product::class),
+        ];
+
     }
 }

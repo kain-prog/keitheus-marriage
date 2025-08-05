@@ -20,6 +20,9 @@ class Product
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(type: 'string', length: 255, unique: true, nullable: false )]
+    private string $sku;
+
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $name;
 
@@ -34,6 +37,9 @@ class Product
 
     #[ORM\Column(type: 'decimal',  precision: 10, scale: 2, nullable: false)]
     private string $price;
+
+    #[ORM\Column(type: 'text', nullable: false)]
+    private string $payment_url;
 
     #[ORM\Column(type: 'boolean', nullable: false)]
     private bool $is_presented = false;
@@ -56,6 +62,16 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getSku(): string
+    {
+        return $this->sku;
+    }
+
+    public function setSku(string $sku): void
+    {
+        $this->sku = $sku;
     }
 
     public function getName(): string
@@ -105,6 +121,16 @@ class Product
     public function setPrice(string $price): void
     {
         $this->price = $price;
+    }
+
+    public function getPaymentUrl(): string
+    {
+        return $this->payment_url;
+    }
+
+    public function setPaymentUrl(string $payment_url): void
+    {
+        $this->payment_url = $payment_url;
     }
 
     public function getIsPresented(): bool

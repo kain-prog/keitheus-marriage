@@ -3,14 +3,20 @@
 namespace App\Bundles\SiteBundle\Routes;
 
 use App\Bundles\GuestBundle\Controller\GuestController;
+use App\Bundles\GuestBundle\Message\SendEmailMessage;
 use App\Bundles\ProductBundle\Controller\ProductController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class SiteRoute extends AbstractController
 {
     public function __construct(
+        private MailerInterface $mailer,
         private readonly GuestController $guestController,
         private readonly ProductController $productController,
     )

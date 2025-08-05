@@ -5,13 +5,8 @@ namespace App\Bundles\GuestBundle\UseCase;
 use App\Bundles\GuestBundle\Entity\Guest;
 use App\Bundles\GuestBundle\Message\SendEmailMessage;
 use App\Bundles\GuestBundle\Repository\GuestRepository;
-use Symfony\Component\Mercure\Update;
 use Symfony\Component\Messenger\Exception\ExceptionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
 readonly class GuestUseCase
 {

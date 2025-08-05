@@ -27,14 +27,7 @@ function initSwiper() {
     }
 }
 
-// Evento disparado a cada navegação do Turbo
 document.addEventListener('turbo:load', () => {
-    initSwiper();
-    initCountdown();
-});
-
-// ✅ Também roda no primeiro load normal
-document.addEventListener('DOMContentLoaded', () => {
     initSwiper();
     initCountdown();
 });

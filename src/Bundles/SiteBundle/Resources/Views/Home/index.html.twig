@@ -19,8 +19,8 @@
             <div class="swiper-slide relative">
                 <img class="object-cover h-screen w-full brightness-50" src="{{ asset('images/banner.jpg') }}" alt="Keilla & Matheus">
                 <div class="px-2 md:px-0 absolute top-0 left-0 bottom-0 w-full h-full flex flex-col items-center justify-center">
-                    <h1 class="text-slate-50 text-4xl md:text-6xl mb-3 max-w-[265px] md:max-w-6xl marcellus text-center">Keilla Carolina & Matheus</h1>
-                    <p class="mb-8"><smal class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</smal></p>
+                    <h1 class="text-slate-50 text-4xl md:text-7xl mb-3 max-w-[265px] md:max-w-6xl great-vibes text-center tracking-wide">Keilla Carolina e Matheus</h1>
+                    <p class="mb-8"><small class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</small></p>
                     <div class="flex gap-2 md:gap-4" >
                         <a class="text-sm md:text-lg bg-[#f9f3f46b] rounded px-3 md:px-5 py-1 backdrop-blur-xs hover:bg-slate-100 transition duration-150 ease-in-out marcellus" href="{{ path('app_presence') }}">Confirmar Presença</a>
                         <a class="text-sm md:text-lg bg-slate-100 hover:bg-gray-300 rounded px-3 md:px-5 py-1 backdrop-blur-xs transition duration-150 ease-in-out marcellus" href="{{ path('app_gift') }}">Lista de Presentes</a>
@@ -31,8 +31,8 @@
             <div class="swiper-slide relative">
                 <img class="object-cover h-screen w-full brightness-50" src="{{ asset('images/banner.jpg') }}" alt="Keilla & Matheus">
                 <div class="px-2 md:px-0 absolute top-0 left-0 bottom-0 w-full h-full flex flex-col items-center justify-center ">
-                    <h1 class="text-slate-50 text-4xl md:text-6xl mb-3 max-w-[265px] md:max-w-6xl marcellus text-center">Keilla Carolina & Matheus</h1>
-                    <p class="mb-8"><smal class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</smal></p>
+                    <h1 class="text-slate-50 text-4xl md:text-7xl mb-3 max-w-[265px] md:max-w-6xl great-vibes text-center">Keilla Carolina & Matheus</h1>
+                    <p class="mb-8"><small class="text-slate-50 text-md md:text-xl marcellus">08 de Novembro de 2025</small></p>
                     <div class="flex gap-2 md:gap-4" >
                         <a class="text-sm md:text-lg bg-[#f9f3f46b] rounded px-3 md:px-5 py-1 backdrop-blur-xs hover:bg-slate-100 marcellus" href="{{ path('app_presence') }}">Confirmar Presença</a>
                         <a class="text-sm md:text-lg bg-slate-100 rounded px-3 md:px-5 py-1 backdrop-blur-xs marcellus" href="{{ path('app_gift') }}">Lista de Presentes</a>
@@ -47,7 +47,7 @@
     </div>
 
 
-    <div class="py-16 bg-slate-100">
+    <div class="py-24 bg-slate-100">
         <div class="container m-auto px-2 text-center">
             <h2 class="text-5xl mb-8 marcellus">Bem-vindos ao nosso grande dia!</h2>
             <p class="text-xl max-w-4xl m-auto mb-16 marcellus">
@@ -56,74 +56,193 @@
             </p>
 
 
-            <h4 class="mb-8">Faltam apenas...</h4>
+            <h4 class="mb-2 marcellus">Faltam apenas...</h4>
 
             <div class="flex items-center justify-center w-full gap-6 count-down-main">
-                <div class="timer">
-                    <div
-                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
-                        <h3
-                            class="countdown-element days font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-max text-center relative z-20"
-                        >
-                        </h3>
-
+                <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
+                    <div class="timer bg-neutral rounded-box text-neutral-content flex flex-col p-2 marcellus">
+                        <span class="marcellus text-5xl">
+                          <span class="countdown-element days"></span>
+                        </span>
+                        dias
                     </div>
-                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">dias</p>
-                </div>
-                <div class="timer">
-                    <div
-                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
-                        <h3
-                            class="countdown-element hours font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
-                        >
-                        </h3>
-
+                    <div class="timer bg-neutral timer rounded-box text-neutral-content flex flex-col p-2 marcellus">
+                        <span class="marcellus text-5xl">
+                          <span class="countdown-element hours"></span>
+                        </span>
+                        horas
                     </div>
-                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">horas</p>
-                </div>
-                <div class="timer">
-                    <div
-                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
-                        <h3
-                            class="countdown-element minutes font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
-                        >
-                        </h3>
-
+                    <div class="timer bg-neutral rounded-box text-neutral-content flex flex-col p-2 marcellus">
+                        <span class="marcellus text-5xl">
+                          <span class="countdown-element minutes"></span>
+                        </span>
+                        min
                     </div>
-                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">minutos</p>
-                </div>
-                <div class="timer">
-                    <div
-                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">
-                        <h3
-                            class="countdown-element seconds font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"
-                        >
-                        </h3>
-
+                    <div class="timer bg-neutral rounded-box text-neutral-content flex flex-col p-2 marcellus">
+                        <span class="marcellus text-5xl">
+                          <span class="countdown-element seconds"></span>
+                        </span>
+                        seg
                     </div>
-                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">segundos</p>
                 </div>
+{#                <div class="timer">#}
+{#                    <div#}
+{#                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">#}
+{#                        <h3#}
+{#                            class="countdown-element days font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-max text-center relative z-20"#}
+{#                        >#}
+{#                        </h3>#}
+
+{#                    </div>#}
+{#                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">dias</p>#}
+{#                </div>#}
+{#                <div class="timer">#}
+{#                    <div#}
+{#                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">#}
+{#                        <h3#}
+{#                            class="countdown-element hours font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"#}
+{#                        >#}
+{#                        </h3>#}
+
+{#                    </div>#}
+{#                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">horas</p>#}
+{#                </div>#}
+{#                <div class="timer">#}
+{#                    <div#}
+{#                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">#}
+{#                        <h3#}
+{#                            class="countdown-element minutes font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"#}
+{#                        >#}
+{#                        </h3>#}
+
+{#                    </div>#}
+{#                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">minutos</p>#}
+{#                </div>#}
+{#                <div class="timer">#}
+{#                    <div#}
+{#                        class="pr-1.5 pl-2 relative bg-indigo-50 w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10 ">#}
+{#                        <h3#}
+{#                            class="countdown-element seconds font-manrope font-semibold text-2xl text-indigo-600 tracking-[15.36px] max-w-[44px] text-center relative z-20"#}
+{#                        >#}
+{#                        </h3>#}
+
+{#                    </div>#}
+{#                    <p class="text-sm font-normal text-gray-900 mt-1 text-center w-full">segundos</p>#}
+{#                </div>#}
             </div>
 
         </div>
     </div>
 
-    <div class="my-16">
+    <div class="mt-8 mb-16 container m-auto">
 
-        <div class="block md:flex gap-12 container m-auto px-2">
+{#        <h2 class="text-4xl text-center mb-6 marcellus">Informações</h2>#}
 
-            <div class="rounded bg-slate-100 items-center sm:columns-4xl py-12 px-6 shadow-lg">
-                <h2 class="mb-4 marcellus font-bold">Data & Horário</h2>
-                <p class="mb-4 marcellus">08 de Novembro de 2025</p>
-                <p class="mb-4 marcellus">10:00 - Cerimônia | 12h Restaurante</p>
+{#        <div class="block md:flex gap-12 container m-auto px-2">#}
+
+{#            <div class="rounded bg-slate-100 items-center sm:columns-4xl py-12 px-6 shadow-lg">#}
+{#                <h2 class="mb-4 marcellus font-bold">Data & Horário</h2>#}
+{#                <p class="mb-4 marcellus">08 de Novembro de 2025</p>#}
+{#                <p class="mb-4 marcellus">10:00 - Cerimônia | 12h Restaurante</p>#}
+{#            </div>#}
+
+{#            <div class="rounded bg-slate-50 items-center sm:columns-4xl py-12 px-6 shadow-lg">#}
+{#                <h2 class="mb-4 marcellus font-bold">Local</h2>#}
+{#                <p class="mb-4 marcellus">R. Américo Ribeiro, s/n - Porto Velho, São Gonçalo - RJ, 24426-460</p>#}
+{#                <p class="mb-4 marcellus">BR-101 São Joaquim, Itaboraí - RJ, 24809-234</p>#}
+{#                <a class="marcellus underline" href="{{ path('app_information') }}">Ver Detalhes</a>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="flex flex-col md:flex-row justify-between gap-5 mb-12">
+            <div class="w-full bg-slate-50 shadow py-12 px-4">
+                <div class="text-center mb-3">
+                    <i class="fa-regular fa-clock text-3xl"></i>
+                </div>
+                <div class="flex items-center justify-center text-center gap-5 mb-0">
+                    <div class="mb-8">
+                        <h2 class="text-2xl">Cronograma do Dia</h2>
+                        <p class="text-md marcellus">Programação completa da cerimônia e restaurante.</p>
+                    </div>
+                </div>
+
+                <p class="mb-12 marcellus text-center text-xs font-bold">08 de Agosto 2025</p>
+
+                <div class="flex justify-between items-center">
+
+                    <div>
+                        <h6 class="text-lg marcellus">Cerimônia Religiosa</h6>
+                        <p class="mb-4 text-sm marcellus">Igreja - Nossa Senhora das Graças</p>
+                    </div>
+
+                    <div>
+                        <strong class="marcellus">9:30</strong>
+                    </div>
+
+                </div>
+
+                <hr class="mb-6 text-slate-300">
+
+                <div class="flex justify-between items-center">
+
+                    <div>
+                        <h6 class="text-lg marcellus">Restaurante</h6>
+                        <p class="mb-4 text-sm marcellus">Dimattoni</p>
+                    </div>
+
+                    <div>
+                        <strong class="marcellus">12:00</strong>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="rounded bg-slate-50 items-center sm:columns-4xl py-12 px-6 shadow-lg">
-                <h2 class="mb-4 marcellus font-bold">Local</h2>
-                <p class="mb-4 marcellus">R. Américo Ribeiro, s/n - Porto Velho, São Gonçalo - RJ, 24426-460</p>
-                <p class="mb-4 marcellus">BR-101 São Joaquim, Itaboraí - RJ, 24809-234</p>
-                <a class="marcellus underline" href="{{ path('app_information') }}">Ver Detalhes</a>
+            <div class="w-full bg-slate-50 shadow py-12 px-4">
+                <div class="text-center mb-3">
+                    <i class="fa-solid fa-location-dot text-3xl"></i>
+                </div>
+                <div class="flex items-center justify-center gap-5 mb-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl marcellus">Local & Endereço</h2>
+                        <p class="text-md marcellus">Como chegar na Igreja e no Restaurante.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-5 mb-8">
+                    <div class="text-end flex h-50 lg:h-auto justify-between flex-col w-full">
+                        <div>
+                            <h6 class="marcellus mb-2 text-md font-semibold">Igreja</h6>
+                            <p class="marcellus">R. Américo Ribeiro, s/n</p>
+                            <p class="marcellus">Porto Velho, São Gonçalo - RJ</p>
+                            <p class="marcellus mb-3">CEP: 24426-460</p>
+                        </div>
+                        <a class="marcellus w-full ms-auto mr-0 my-0 text-center text-slate-50 py-2 block border rounded bg-gray-200 max-w-[220px] hover:bg-gray-300 transition duration-150" href="https://maps.app.goo.gl/LtynMMCyL9G2df1h8" target="_blank">
+                            <img class="max-w-[100px] m-auto" src="{{ asset('images/g-maps.png') }}" alt="Google Maps">
+                        </a>
+                    </div>
+
+                    <div class="w-full h-50 lg:h-auto flex flex-col justify-between">
+                        <div>
+                            <h6 class="marcellus mb-2 text-md font-semibold">Restaurante</h6>
+                            <p class="marcellus">BR-101</p>
+                            <p class="marcellus">São Joaquim, Itaboraí - RJ</p>
+                            <p class="marcellus mb-3">CEP: 24809-234</p>
+                        </div>
+                        <a class="marcellus w-full text-center text-slate-50 py-2 block border rounded border-gray-300 bg-gray-200 max-w-[220px] hover:bg-gray-300 transition duration-150" href="https://maps.app.goo.gl/ZQ8hhRSevaJFWNjS7" target="_blank">
+                            <img class="max-w-[100px] m-auto" src="{{ asset('images/g-maps.png') }}" alt="Google Maps">
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="flex justify-center">
+            <a class="marcellus text-md w-full text-center text-stone-800 py-2 block border border-slate-300 rounded bg-slate-200 max-w-[300px] hover:bg-slate-300 transition duration-150 flex justify-center items-center gap-3" href="{{ path('app_information') }}">
+{#                <i class="fa-solid fa-info"></i>#}
+                <i class="text-md fa-solid fa-list-ul"></i>
+                Mais informações
+            </a>
         </div>
 
     </div>
