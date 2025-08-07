@@ -32,4 +32,3 @@ jobs:
                     php bin/console doctrine:schema:update -f
                     php bin/console asset-map:compile
                     php bin/console cache:clear
-                    composer install --no-dev --no-progress -a
