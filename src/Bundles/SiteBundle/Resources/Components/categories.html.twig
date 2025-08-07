@@ -1,5 +1,17 @@
-<div class="flex gap-6 w-full items-center justify-center">
+<div data-controller="category" id="categories" class="flex gap-6 w-full items-center justify-center">
+    {% set rawCategories = app.request.attributes.get('categories') ?? '' %}
+    {% set currentCategories = rawCategories | split(',') %}
+
     {% for category in categories %}
-        <span class="text-xs md:text-[15px] marcellus px-4 py-1 rounded-full border select-none border-slate-300 hover:bg-slate-300 transition duration-150 cursor-pointer">{{ category.name }}</span>
+        {% set isActive = category.name in currentCategories %}
+        <a
+            data-category-target="item"
+            data-category-name="{{ category.name }}"
+            data-action="click->category#toggle"
+            data-turbo-frame="products"
+            class="text-xs md:text-[15px] marcellus px-4 py-1 rounded-full border select-none border-slate-300 transition duration-150 cursor-pointer {{ isActive ? 'bg-slate-300' : '' }}"
+        >
+            {{ category.name }}
+        </a>
     {% endfor %}
 </div>

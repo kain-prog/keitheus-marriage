@@ -1,4 +1,4 @@
-<div class="my-16 flex gap-6 justify-center flex-wrap md:flex-nowrap" id="products-container">
+<turbo-frame class="my-16 flex gap-6 justify-center flex-wrap md:flex-nowrap" id="products">
     {% for product in products[:6] %}
         <div class="px-12 py-8 bg-slate-50 w-full max-w-[450px] flex flex-col justify-center items-center shadow product-card" id="{{ product.id }}">
             <img class="max-h-[95px] md:max-h-[160px] rounded mb-4 md:mb-8" src="/uploads/{{ product.thumbnail }}" alt="{{ product.name }}" />
@@ -18,12 +18,12 @@
                 <h2 class="text-center text-xl md:text-4xl my-5 marcellus">{{ product.price|format_currency('BRL', locale='pt_BR') }}</h2>
 
                 {% if product.isPresented %}
-                    <a href="javascript:void(0);" class="m-auto max-w-[190px] md:w-full md:max-w-full cursor-default block marcellus py-2 rounded text-slate-900 bg-slate-200 border border-slate-300 hover:bg-slate-300 text-center transition duration-150 ">
+                    <a class="select-none opacity-60 m-auto max-w-[190px] md:w-full md:max-w-full cursor-default block marcellus py-2 rounded text-slate-900 bg-slate-200 border border-slate-300 hover:bg-slate-300 text-center transition duration-150 ">
                         <i class="fas fa-check text-sm"></i>
                         <span class="text-xs md:text-[16px]">Já Presenteado</span>
                     </a>
                 {% else %}
-                    <a href="{{ product.paymentUrl }}" class="m-auto max-w-[190px] md:w-full md:max-w-full transition duration-150 w-full block py-2 rounded text-slate-50 text-center cursor-pointer bg-slate-700 hover:bg-slate-600 marcellus">
+                    <a href="{{ product.paymentUrl }}" class="select-none m-auto max-w-[190px] md:w-full md:max-w-full transition duration-150 w-full block py-2 rounded text-slate-50 text-center cursor-pointer bg-slate-700 hover:bg-slate-600 marcellus">
                         <i class="fa-solid fa-gift"></i>
                         <span class="text-xs md:text-[16px] font-semibold marcellus">Presentear</span>
                     </a>
@@ -31,7 +31,7 @@
             </div>
         </div>
     {% endfor %}
-</div>
+</turbo-frame>
 
 <div class="flex justify-center" id="load-more-container" data-target="product.loadMoreButton">
     <button id="load-more" class="py-2 px-8 mb-16 text-slate-900 bg-slate-200 rounded-lg border border-slate-300 hover:bg-slate-300 text-center transition duration-150" data-action="click->product#loadMore" {% if products|length <= 6 %} style="display: none;" {% endif %}>

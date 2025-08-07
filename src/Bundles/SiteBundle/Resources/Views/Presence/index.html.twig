@@ -24,7 +24,13 @@
                     {% include '@Components/toast-success.html.twig' %}
                     {% include '@Components/toast-danger.html.twig' %}
 
-                    {{ form_start(form, {'attr': {'data-action': 'submit->presence#submit', 'id': 'presence-form'}}) }}
+                    {{ form_start(form, {
+                        attr: {
+                            'data-presence-target': 'sendForm',
+                            'data-action': 'submit->presence#submit',
+                            'id': 'presence-form'
+                        }
+                    }) }}
 
                     <div data-controller="dropdown" class="relative w-full mb-4">
                         <label class="mb-1 block marcellus" for="guest_confirmation_guest">Seu nome: </label>
@@ -43,7 +49,7 @@
                         <div
                             id="dropdown-search"
                             data-dropdown-target="menu"
-                            class="border border-transparent outline-none hidden absolute z-10 mt-0 w-full shadow-lg bg-white ring-1 ring-slate-300 ring-opacity-5 p-1 space-y-1"
+                            class="max-h-[300px] overflow-auto border border-transparent outline-none hidden absolute z-10 mt-0 w-full shadow-lg bg-white ring-1 ring-slate-300 ring-opacity-5 p-1 space-y-1"
                         >
                             <input
                                 data-dropdown-target="input"

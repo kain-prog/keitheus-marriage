@@ -31,6 +31,12 @@ class Guest
     #[ORM\Column(type: 'integer', nullable: false)]
     private int $companions_number = 0;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $message = null;
+
+    #[ORM\Column(type: 'boolean', nullable: false)]
+    private bool $response = false;
+
     #[ORM\Column(type: 'datetime')]
     private \DateTime $created_at;
 
@@ -75,6 +81,26 @@ class Guest
     public function setCompanionsNumber(int $companions_number): void
     {
         $this->companions_number = $companions_number;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(?string $message): void
+    {
+        $this->message = $message;
+    }
+
+    public function getResponse(): ?bool
+    {
+        return $this->response;
+    }
+
+    public function setResponse(?bool $response): void
+    {
+        $this->response = $response;
     }
 
     public function getCreatedAt(): \DateTime

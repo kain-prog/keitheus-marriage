@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-    static targets = ["responseS", "responseD", "toastSuccess", "toastDanger"];
+    static targets = ["SendForm", "responseS", "responseD", "toastSuccess", "toastDanger"];
 
     connect() {
         console.log("✅ Controller presence conectado");
@@ -32,6 +32,7 @@ export default class extends Controller {
 
             if (data.success) {
                 this.showToast(this.toastSuccessTarget);
+                this.clearForm();
             } else {
                 this.showToast(this.toastDangerTarget);
             }
@@ -82,5 +83,28 @@ export default class extends Controller {
 
             dropdownSearch.classList.add('ring-slate-300');
         }, 3000);
+    }
+
+    clearForm() {
+        if (this.hasSendFormTarget) {
+            this.sendFormTarget.reset();
+        }
+
+        const dropdownLabel = document.querySelector("#dropdown-label");
+        const guestInput = document.querySelector("[name='guest_confirmation[guest]']");
+        const dropdownMenu = document.querySelector("#dropdown-search");
+
+        if (dropdownLabel) dropdownLabel.textContent = "Selecione o seu nome...";
+        if (guestInput) guestInput.value = "";
+        if (dropdownMenu) dropdownMenu.classList.add("hidden");
+
+        const messageInput = document.querySelector("[name='guest_confirmation[message]']");
+        if (messageInput) messageInput.value = "";
+
+        const companionsNumber = document.querySelector("[name='guest_confirmation[companions_number]']");
+        if (companionsNumber) companionsNumber.value = "";
+
+        const radios = document.querySelectorAll("[name='guest_confirmation[is_confirmed]']");
+        radios.forEach(radio => radio.checked = false);
     }
 }

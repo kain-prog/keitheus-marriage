@@ -1,0 +1,66 @@
+{% extends '@Templates/EasyAdmin/layout.html.twig' %}
+
+{% block page_title %} {{ title }} {% endblock %}
+
+{% block main %}
+    <div class="w-100 row">
+
+        <div class="col-8 py-2">
+            <div class="d-flex align-items-center gap-1 mb-4">
+                <h4 class="mb-0">Convidados confirmados</h4>
+                <span class="badge badge-primary">{{ guests_confirmed | length }}</span>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+
+                {% for guest in guests_confirmed %}
+
+                    <a class="d-block w-100" href="/admin/guest/{{ guest.id }}" style="max-width: 280px;">
+                        <div class="card px-3 py-2 shadow-sm w-100">
+                            <div class="d-flex justify-content-between">
+                                <h6>{{ guest.name }}</h6>
+                                <span><i class="fa-solid fa-circle-check text-success"></i></span>
+                            </div>
+                            <p>Acompanhantes: {{ guest.CompanionsNumber }}</p>
+                            <textarea class="form-control" disabled rows="4">{{ guest.message | default('') }}</textarea>
+                        </div>
+                    </a>
+                {% endfor %}
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="d-flex align-items-center gap-2 mb-4">
+                <h4 class="mb-0">Convidados não confirmados</h4>
+                <span class="badge badge-danger">{{ guests_not_confirmed | length }}</span>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-around gap-3">
+
+                {% for guest in guests_not_confirmed %}
+
+                    <a class="d-block w-100" href="/admin/guest/{{ guest.id }}" style="max-width: 280px;">
+                        <div class="card px-3 py-2 shadow-sm w-100">
+                            <div class="d-flex justify-content-between">
+                                <h6>{{ guest.name }}</h6>
+                                <span><i class="fa-solid fa-circle-xmark text-danger"></i></span>
+                            </div>
+                            <p>Acompanhantes: {{ guest.CompanionsNumber }}</p>
+                            <textarea class="form-control" disabled rows="4">{{ guest.message | default('') }}</textarea>
+                        </div>
+                    </a>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="position-sticky top-0 py-2">
+                <h4 class="mb-2">Valor arrecadado:</h4>
+                <p class="fw-semibold fs-5 text-success">{{ totalPrice|format_currency('BRL', locale='pt_BR') }}</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

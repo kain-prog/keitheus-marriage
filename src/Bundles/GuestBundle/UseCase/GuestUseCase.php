@@ -27,6 +27,8 @@ readonly class GuestUseCase
 
         $guest->setIsConfirmed($isConfirmed);
         $guest->setCompanionsNumber($companions_number);
+        $guest->setMessage($message);
+        $guest->setResponse(true);
 
         $this->guestRepository->save($guest);
 
