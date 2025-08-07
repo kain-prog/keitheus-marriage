@@ -19,7 +19,7 @@ jobs:
                   username: ${{ secrets.SSH_USER }}
                   password: ${{ secrets.SSH_PASS }}
                   source: "."
-                  target: /keitheus.kaindev.com.br/public_html
+                  target: /home/kaindev/keitheus.kaindev.com.br/public_html
 
             - name: "Build Application"
               uses: appleboy/ssh-action@v1
