@@ -25,7 +25,8 @@ class ProductRepository extends ServiceEntityRepository
             ->where('p.is_presented = :true')
             ->setParameter('true', true);
 
-        return $queryBuilder->getQuery()->getSingleScalarResult();
+        $result = $queryBuilder->getQuery()->getSingleScalarResult();
+        return $result !== null ? (string) $result : '0';
     }
 
     public function getProductsByCategories(?array $categories): array
