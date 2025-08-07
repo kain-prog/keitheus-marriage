@@ -29,11 +29,11 @@ jobs:
                   password: ${{ secrets.SSH_PASS }}
                   script: |
                     cd /www/wwwroot/keitheus.kaindev.com.br/public_html
-                    composer install --no-dev --optimize-autoloader
+                    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
                     php bin/console doctrine:schema:update -f
                     php bin/console asset-map:compile
                     php bin/console cache:clear
-                    composer install --no-dev --optimize-autoloader
+                    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
                     php bin/console importmap:install
                     php bin/console cache:clear --env=prod
                     php bin/console cache:warmup --env=prod
