@@ -37,3 +37,4 @@ jobs:
                     php bin/console importmap:install
                     php bin/console cache:clear --env=prod
                     php bin/console cache:warmup --env=prod
+                    cd public chown -R www:www .

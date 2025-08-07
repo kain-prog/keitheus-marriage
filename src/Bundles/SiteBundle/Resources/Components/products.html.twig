@@ -1,6 +1,6 @@
-<turbo-frame class="my-16 flex gap-6 justify-center flex-wrap md:flex-nowrap" id="products">
+<turbo-frame class="my-16 flex gap-6 justify-center flex-wrap" id="products">
     {% for product in products[:6] %}
-        <div class="px-12 py-8 bg-slate-50 w-full max-w-[450px] flex flex-col justify-center items-center shadow product-card" id="{{ product.id }}">
+        <div class="px-12 py-8 bg-slate-50 w-full max-w-[380px] flex flex-col justify-center items-center shadow product-card" id="{{ product.id }}">
             <img class="max-h-[95px] md:max-h-[160px] rounded mb-4 md:mb-8" src="/uploads/{{ product.thumbnail }}" alt="{{ product.name }}" />
 
             <div class="w-full">
