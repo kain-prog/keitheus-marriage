@@ -10,7 +10,7 @@ function initSwiper() {
         new Swiper('.swiper', {
 
             loop: true,
-            // effect: "slide",
+            effect: "slide",
             speed:1000,
             autoplay: {
                 delay: 3000
@@ -18,6 +18,8 @@ function initSwiper() {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                bulletClass: 'custom-bullet',
+                bulletActiveClass: 'custom-bullet-active',
             },
             navigation: {
                 nextEl: '.swiper-button-next',
