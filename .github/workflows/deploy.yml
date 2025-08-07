@@ -21,15 +21,15 @@ jobs:
                   source: "."
                   target: /keitheus.kaindev.com.br/public_html
 
-            -   name: "Build Application"
-                uses: appleboy/ssh-action@v1
-                with:
-                    host: ${{ secrets.SSH_HOST }}
-                    username: ${{ secrets.SSH_USER }}
-                    password: ${{ secrets.SSH_PASS }}
-                    script: |
-                        cd /keitheus.kaindev.com.br/public_html
-                        php bin/console doctrine:schema:update -f
-                        php bin/console asset-map:compile
-                        php bin/console cache:clear
-                        composer install --no-dev --no-progress -a
+            - name: "Build Application"
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USER }}
+                  password: ${{ secrets.SSH_PASS }}
+                  script: |
+                    cd /keitheus.kaindev.com.br/public_html
+                    php bin/console doctrine:schema:update -f
+                    php bin/console asset-map:compile
+                    php bin/console cache:clear
+                    composer install --no-dev --no-progress -a
