@@ -26,5 +26,6 @@ jobs:
                     cd ${{ secrets.PROJECT_PATH }} &&
                     git pull origin main &&
                     php bin/console cache:clear &&
-                    php bin/console doctrine:migrations:migrate --no-interaction
+                    php bin/console doctrine:schema:update --force --no-interaction &&
+                    php bin/console asset-map:compile
                   "
