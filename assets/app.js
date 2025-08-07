@@ -5,13 +5,16 @@ import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
-// Função para inicializar o Swiper
 function initSwiper() {
     if (document.querySelector('.swiper')) {
         new Swiper('.swiper', {
-            // direction: 'horizontal',
+
             loop: true,
-            effect: "cube",
+            // effect: "slide",
+            speed:1000,
+            autoplay: {
+                delay: 3000
+            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
