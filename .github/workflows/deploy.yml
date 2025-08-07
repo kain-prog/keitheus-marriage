@@ -4,28 +4,32 @@ on:
     push:
         branches:
             - main
-
 jobs:
-    deploy:
+    build_deploy:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout do código
-              uses: actions/checkout@v3
+            - name: "Download Code"
+              uses: actions/checkout@v4
 
-            - name: Config SSH
-              run: |
-                  mkdir -p ~/.ssh
-                  echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-                  chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+            - name: "Copy files via SSH"
+              uses: appleboy/scp-action@v1
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USER }}
+                  password: ${{ secrets.SSH_PASS }}
+                  source: "."
+                  target: /keitheus.kaindev.com.br/public_html
 
-            - name: Deploy
-              run: |
-                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
-                    cd ${{ secrets.PROJECT_PATH }} &&
-                    git pull origin main &&
-                    php bin/console cache:clear &&
-                    php bin/console doctrine:schema:update --force --no-interaction &&
-                    php bin/console asset-map:compile
-                  "
+            -   name: "Build Application"
+                uses: appleboy/ssh-action@v1
+                with:
+                    host: ${{ secrets.SSH_HOST }}
+                    username: ${{ secrets.SSH_USER }}
+                    password: ${{ secrets.SSH_PASS }}
+                    script: |
+                        cd /keitheus.kaindev.com.br/public_html
+                        php bin/console doctrine:schema:update -f
+                        php bin/console asset-map:compile
+                        php bin/console cache:clear
+                        composer install --no-dev --no-progress -a
