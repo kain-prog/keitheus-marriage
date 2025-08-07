@@ -28,13 +28,15 @@ jobs:
                   username: ${{ secrets.SSH_USER }}
                   password: ${{ secrets.SSH_PASS }}
                   script: |
-                    cd /www/wwwroot/keitheus.kaindev.com.br/public_html
-                    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
-                    php bin/console doctrine:schema:update -f
-                    php bin/console asset-map:compile
-                    php bin/console cache:clear
-                    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
-                    php bin/console importmap:install
-                    php bin/console cache:clear --env=prod
-                    php bin/console cache:warmup --env=prod
-                    cd public chown -R www:www .
+                        cd /www/wwwroot/keitheus.kaindev.com.br/public_html
+                        COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
+                        php bin/console doctrine:schema:update -f
+                        php bin/console asset-map:compile
+                        php bin/console cache:clear
+                        COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
+                        php bin/console importmap:install
+                        php bin/console cache:clear --env=prod
+                        php bin/console cache:warmup --env=prod
+                        chown -R www:www var public
+                        chmod -R 775 var public
+
