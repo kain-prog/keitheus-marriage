@@ -29,6 +29,7 @@ jobs:
                   password: ${{ secrets.SSH_PASS }}
                   script: |
                     cd /www/wwwroot/keitheus.kaindev.com.br/public_html
+                    composer install --no-dev --optimize-autoloader
                     php bin/console doctrine:schema:update -f
                     php bin/console asset-map:compile
                     php bin/console cache:clear
