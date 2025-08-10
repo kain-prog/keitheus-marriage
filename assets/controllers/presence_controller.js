@@ -12,10 +12,20 @@ export default class extends Controller {
 
         const form = event.target;
         const guestSelect = form.querySelector("[name='guest_confirmation[guest]']");
+        const submitButton = form.querySelector("#confirm-btn");
+
+        submitButton.classList.remove("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+        submitButton.classList.add("cursor-normal", "bg-zinc-100", "text-200");
+        submitButton.setAttribute("disabled", "true");
 
         if (!guestSelect.value || guestSelect.value === "") {
             this.inputVoidStyle();
             this.showError("Por favor, selecione o seu nome antes de confirmar.");
+
+            submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
+            submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+            submitButton.setAttribute("disabled", "false"); 
+
             return;
         }
 
@@ -33,6 +43,11 @@ export default class extends Controller {
             if (data.success) {
                 this.showToast(this.toastSuccessTarget);
                 this.clearForm();
+                
+                submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
+                submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+                submitButton.setAttribute("disabled", "false");
+
             } else {
                 this.showToast(this.toastDangerTarget);
             }
@@ -43,6 +58,10 @@ export default class extends Controller {
 
         } catch (error) {
             this.showToast(this.toastDangerTarget);
+
+                submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+                submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
+                submitButton.setAttribute("disabled", "false");
 
             if (this.hasResponseDTarget) {
                 this.responseDTarget.textContent = data.message || "Erro ao confirmar presença.";
