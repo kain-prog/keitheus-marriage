@@ -14,18 +14,73 @@ export default class extends Controller {
         const guestSelect = form.querySelector("[name='guest_confirmation[guest]']");
         const submitButton = form.querySelector("#confirm-btn");
 
-        submitButton.classList.remove("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
-        submitButton.classList.add("cursor-normal", "bg-zinc-100", "text-200");
-        submitButton.setAttribute("disabled", "true");
+        const disableBtn = () => {
+            submitButton.classList.remove("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+            submitButton.classList.add("cursor-normal", "bg-zinc-100", "text-200");
+            submitButton.setAttribute("disabled", "true");
+        };
+        const enableBtn = () => {
+            submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+            submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
+            submitButton.removeAttribute("disabled"); // << importante
+        };
+
+        disableBtn();
 
         if (!guestSelect.value || guestSelect.value === "") {
             this.inputVoidStyle();
             this.showError("Por favor, selecione o seu nome antes de confirmar.");
+            enableBtn();
+            return;
+        }
 
-            submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
-            submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
-            submitButton.setAttribute("disabled", "false"); 
+        const confirmedYes = form.querySelector("[name='guest_confirmation[is_confirmed]'][value='1']")?.checked === true;
+        const confirmedNo  = form.querySelector("[name='guest_confirmation[is_confirmed]'][value='0']")?.checked === true;
 
+        const companionsNumberEl = form.querySelector("#guest_confirmation_companions_number");
+        const max = parseInt(companionsNumberEl?.value || "0", 10);
+        const companionsJson = form.querySelector("#guest_confirmation_companions_list")?.value || "[]";
+
+        let companions = [];
+        try { companions = JSON.parse(companionsJson) || []; } catch { companions = []; }
+
+        const adultCount = companions.reduce((acc, c) => acc + (c && c.child === false ? 1 : 0), 0);
+
+        if (Number.isNaN(max) || max < 0) {
+            this.showError("Número de acompanhantes inválido.");
+            enableBtn();
+            return;
+        }
+
+        if (confirmedNo) {
+            if (max > 0 || companions.length > 0) {
+                this.showError("Com 'Não', não é permitido informar acompanhantes.");
+                enableBtn();
+                return;
+            }
+        }
+
+        if (max > 0 && !confirmedYes) {
+            this.showError("Com acompanhantes, a confirmação precisa ser 'Sim'.");
+            enableBtn();
+            return;
+        }
+
+        if (companions.length > max) {
+            this.showError(`Você adicionou mais acompanhantes do que o permitido (${companions.length}/${max}). Remova alguns ou ajuste o número.`);
+            enableBtn();
+            return;
+        }
+
+        if (max > 0 && companions.length === 0) {
+            this.showError("Informe ao menos 1 acompanhante ou reduza o número para 0.");
+            enableBtn();
+            return;
+        }
+
+        if (adultCount > 1) {
+            this.showError("Só é permitido 1 acompanhante adulto; os demais precisam ser crianças.");
+            enableBtn();
             return;
         }
 
@@ -33,9 +88,7 @@ export default class extends Controller {
             const response = await fetch('/confirmar-presenca', {
                 method: form.method,
                 body: new FormData(form),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
             });
 
             const data = await response.json();
@@ -43,13 +96,10 @@ export default class extends Controller {
             if (data.success) {
                 this.showToast(this.toastSuccessTarget);
                 this.clearForm();
-                
-                submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
-                submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
-                submitButton.setAttribute("disabled", "false");
-
+                enableBtn();
             } else {
                 this.showToast(this.toastDangerTarget);
+                enableBtn();
             }
 
             if (this.hasResponseSTarget) {
@@ -58,16 +108,13 @@ export default class extends Controller {
 
         } catch (error) {
             this.showToast(this.toastDangerTarget);
-
-                submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
-                submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
-                submitButton.setAttribute("disabled", "false");
-
+            enableBtn();
             if (this.hasResponseDTarget) {
-                this.responseDTarget.textContent = data.message || "Erro ao confirmar presença.";
+                this.responseDTarget.textContent = "Erro ao confirmar presença.";
             }
         }
     }
+
 
     showToast(toastElement) {
         if (this.hasToastSuccessTarget) this.toastSuccessTarget.classList.add("hidden");
