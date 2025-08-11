@@ -14,5 +14,5 @@ return [
     App\Bundles\CategoryBundle\CategoryBundle::class => ['all' => true],
     App\Bundles\ProductBundle\ProductBundle::class => ['all' => true],
     App\Bundles\GuestBundle\GuestBundle::class => ['all' => true],
-    App\Bundles\AuthBundle\AuthBundle::class => ['all' => true]
+    App\Bundles\AuthBundle\AuthBundle::class => ['all' => true],
 ];

@@ -6,6 +6,7 @@ use App\Bundles\GuestBundle\Entity\Guest;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,6 +39,14 @@ class GuestConfirmationType extends AbstractType
                 'attr' => [
                     'placeholder' => '0, 1, 2...',
                     'class' => 'w-full border border-gray-300 rounded-md p-1 mt-1 focus:outline-gray-400 marcellus',
+                ],
+            ])
+            ->add('companions_list', HiddenType::class, [
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'data-companions-target' => 'hidden',
+                    'id' => 'guest_confirmation_companions_list',
                 ],
             ])
             ->add('is_confirmed', ChoiceType::class, [
