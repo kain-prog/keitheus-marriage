@@ -6,6 +6,7 @@ use App\Bundles\GuestBundle\Message\SendEmailMessage;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 
 #[AsMessageHandler]
@@ -20,7 +21,7 @@ readonly class SendEmailMessageHandler
     {
         foreach ($message->to as $recipient) {
             $email = (new Email())
-                ->from('"Convite confirmado" <contato@kaindev.com.br>')
+                ->from(new Address('contato@kaindev.com.br', 'Convite confirmado'))
                 ->to($recipient)
                 ->subject($message->subject)
                 ->html($message->htmlContent);

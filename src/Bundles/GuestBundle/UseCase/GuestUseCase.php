@@ -69,7 +69,7 @@ readonly class GuestUseCase
             ]);
 
             $this->bus->dispatch(new SendEmailMessage(
-                ['mtheusmss@gmail.com'],
+                ['mtheusmss@gmail.com', 'keillacarolina2013@gmail.com'],
                 'Confirmação de presença recebida!',
                 $html
             ));
