@@ -1,0 +1,119 @@
+{% extends '@Resources/Mail/layout.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <table
+        width="680px"
+        border="0"
+        cellpadding="0"
+        cellspacing="0"
+        align="center"
+        style="
+            background: #849578;
+            position: relative;
+            border-radius: 220px;
+        "
+    >
+        <img src="{{ absolute_url(asset('imgs/flower-top.png')) }}" alt="buquê" style="max-width: 325px; position: absolute; top:-45px;left:-20px; z-index: 9999">
+        <img src="{{ absolute_url(asset('imgs/flower-bot.png')) }}" alt="buquê" style="max-width: 325px; position: absolute; bottom:19px;right:-19px; z-index: 9999">
+
+        <tr>
+            <td style="padding: 40px 5px 0; text-align: center">
+                <h1><i style="font-family: cursive; color: #fff;">KeiTheus <3</i></h1>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 10px 5px;">
+                <p
+                    style="max-width: 500px; text-align: center; margin: auto; font-size: 13px;padding:5px 5px;"
+                >
+                    <i
+                        style="color: #fff; font-family: sans-serif"
+                    >
+                        ❝Escolher a pessoa com quem você quer dividir sua vida, é uma das decisões mais importantes, que qualquer um pode fazer, sempre...❞
+                    </i>
+
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 40px 5px 0;">
+                <h2 style="max-width: 500px;color:#fff; text-align: center; font-size: 18px;margin: auto;padding:15px 5px; font-family: sans-serif">
+                    Formulário de confirmação
+                </h2>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 5px;">
+                <p style="text-align: center; color: #fff; font-size: 14px;">Convidado:</p>
+
+                <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">{{ name }}</p>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 5px">
+                <p style="text-align: center; color: #fff; font-size: 14px;">Acompanhantes:</p>
+
+                <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">{{ companions_number }}</p>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 5px;">
+                <p style="text-align: center; color: #fff; font-size: 14px;">Lista de acompanhantes:</p>
+
+                {% if companions|length > 0 %}
+                    <ul style="">
+                        {% for companion in companions %}
+                            <li style="text-align: center; color: #fff;">{{ companion.name }}
+
+                                {% if companion.child %}
+                                    <i>(Criança)</i>
+                                {% else %}
+                                    <i>(Adulto)</i>
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="text-align: center; color: #fff; font-weight: 600">Nenhum.</p>
+                {% endif %}
+            </td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 5px 5px 40px">
+                <p style="text-align: center; color: #fff; font-size: 14px;">Mensagem:</p>
+
+                <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">
+                    <p style="text-align: center; color: #fff; font-size: 16px">{{ message }}</p>
+                </p>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 80px">
+                <a
+                    href="https://keitheus.kaindev.com.br/"
+                    target="_blank"
+                    style="width: max-content; margin: auto; text-align: center; display: block; text-decoration:underline; color:#fff;"
+                >
+                    Acessar site
+                </a>
+            </td>
+        </tr>
+
+    </table>
+
+{% endblock %}

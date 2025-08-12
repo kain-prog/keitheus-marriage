@@ -43,4 +43,17 @@ final class SiteRoute extends AbstractController
             'title' => 'KeiTheus - Informações',
         ]);
     }
+
+    #[Route('/mail', name: 'mail')]
+    public function mail(): Response
+    {
+        return $this->render('@Resources/Mail/Presence/index.html.twig', [
+            'confirmed' => true,
+            'title' => 'KeiTheus - Casamento',
+            'name' => 'teste',
+            'companions_number' => 0,
+            'companions' => array(),
+            'message' => ''
+        ]);
+    }
 }

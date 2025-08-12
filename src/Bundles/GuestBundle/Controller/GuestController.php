@@ -17,8 +17,7 @@ use Twig\Error\SyntaxError;
 class GuestController extends AbstractController
 {
     public function __construct(
-        private readonly GuestUseCase $guestUseCase,
-        private Environment $twig
+        private readonly GuestUseCase $guestUseCase
     ){}
 
     public function showPresenceForm(): Response
@@ -34,7 +33,8 @@ class GuestController extends AbstractController
     /**
      * @throws ExceptionInterface
      */
-    public function confirmPresence(Request $request): JsonResponse {
+    public function confirmPresence(Request $request): JsonResponse
+    {
 
         $form = $this->createForm(GuestConfirmationType::class);
         $form->handleRequest($request);
@@ -63,11 +63,6 @@ class GuestController extends AbstractController
                 return new JsonResponse(['success' => true, 'message' => 'Confirmação registrada!']);
             }
 
-            return new JsonResponse([
-                'success' => false,
-                'errors' => (string) $form->getErrors(true, false)
-            ], 400);
-
         }catch (\Exception $exception){
 
             return new JsonResponse([
@@ -75,5 +70,10 @@ class GuestController extends AbstractController
                 'errors' => (string) $exception->getMessage(),
             ], 400);
         }
+
+        return new JsonResponse([
+            'success' => false,
+            'errors' => (string) $form->getErrors(true, false)
+        ], 400);
     }
 }

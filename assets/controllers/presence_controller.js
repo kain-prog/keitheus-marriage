@@ -4,7 +4,7 @@ export default class extends Controller {
     static targets = ["SendForm", "responseS", "responseD", "toastSuccess", "toastDanger"];
 
     connect() {
-        console.log("✅ Controller presence conectado");
+        console.log("✅ Controller Presence conectado");
     }
 
     async submit(event) {
