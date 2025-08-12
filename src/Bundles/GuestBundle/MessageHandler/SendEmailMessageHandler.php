@@ -20,7 +20,7 @@ readonly class SendEmailMessageHandler
     {
         foreach ($message->to as $recipient) {
             $email = (new Email())
-                ->from('contato@kaindev.com.br')
+                ->from('"Convite confirmado" <contato@kaindev.com.br>')
                 ->to($recipient)
                 ->subject($message->subject)
                 ->html($message->htmlContent);

@@ -2,10 +2,7 @@
 
 namespace App\Bundles\GuestBundle\Entity;
 
-use App\Bundles\AddressBundle\Entity\Address;
-use App\Bundles\CardBundle\Entity\Card;
 use App\Bundles\GuestBundle\Repository\GuestRepository;
-use App\Bundles\OrderBundle\Entity\Order;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,11 +34,20 @@ class Guest
     #[ORM\Column(type: 'boolean', nullable: false)]
     private bool $response = false;
 
+    #[ORM\ManyToMany(targetEntity: Companion::class, inversedBy: 'guests')]
+    #[ORM\JoinTable(name: "guest_companion")]
+    private Collection $companions;
+
     #[ORM\Column(type: 'datetime')]
     private \DateTime $created_at;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTime $updated_at = null;
+
+    public function __construct()
+    {
+        $this->companions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -101,6 +107,26 @@ class Guest
     public function setResponse(?bool $response): void
     {
         $this->response = $response;
+    }
+
+    public function getCompanions(): Collection
+    {
+        return $this->companions;
+    }
+
+    public function addCompanion(Companion $companion): self
+    {
+        if (!$this->companions->contains($companion)) {
+            $this->companions[] = $companion;
+        }
+
+        return $this;
+    }
+
+    public function removeCompanion(Companion $companion): self
+    {
+        $this->companions->removeElement($companion);
+        return $this;
     }
 
     public function getCreatedAt(): \DateTime

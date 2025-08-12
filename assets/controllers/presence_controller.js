@@ -98,8 +98,10 @@ export default class extends Controller {
                 this.clearForm();
                 enableBtn();
             } else {
-                this.showToast(this.toastDangerTarget);
+                this.showError(data.errors);
                 enableBtn();
+                enableBtn();
+
             }
 
             if (this.hasResponseSTarget) {
@@ -128,7 +130,9 @@ export default class extends Controller {
     }
 
     showError(message) {
+        console.log('aaaaaaaaaaaa');
         if (this.responseDTarget) {
+            console.log('inside if aaaaaaaaaaaa');
             this.responseDTarget.textContent = message;
         }
         this.showToast(this.toastDangerTarget);

@@ -18,10 +18,26 @@
                     <a class="d-block w-100" href="/admin/guest/{{ guest.id }}" style="max-width: 280px;">
                         <div class="card px-3 py-2 shadow-sm w-100">
                             <div class="d-flex justify-content-between">
-                                <h6>{{ guest.name }}</h6>
-                                <span><i class="fa-solid fa-circle-check text-success"></i></span>
+                                <h6 class="mb-3">{{ guest.name }}</h6>
+                                <span><i class="text-success fw-bold">{{ guest.CompanionsNumber }}</i></span>
                             </div>
-                            <p>Acompanhantes: {{ guest.CompanionsNumber }}</p>
+                            <p class="mb-1">Acompanhantes: </p>
+                            <ul style="list-style: none;padding: 0">
+                                {% for companion in guest.getCompanions %}
+                                    <li class="d-flex justify-content-between w-100 list-none">
+                                        <span class=""><small>{{ companion.name }}</small></span>
+                                        <span class="">
+                                            {% if companion.isChild %}
+                                                <small>Criança</small>
+                                            {% else %}
+                                                <small>Adulto</small>
+                                            {% endif %}
+                                        </span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+
                             <textarea class="form-control" disabled rows="4">{{ guest.message | default('') }}</textarea>
                         </div>
                     </a>

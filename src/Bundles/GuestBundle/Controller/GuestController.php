@@ -39,21 +39,41 @@ class GuestController extends AbstractController
         $form = $this->createForm(GuestConfirmationType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->guestUseCase->handleGuestConfirmation(
-                $form->get('guest')->getData(),
-                $form->get('is_confirmed')->getData(),
-                $form->get('companions_number')->getData(),
-                $form->get('message')->getData(),
+        try {
 
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            return new JsonResponse(['success' => true, 'message' => 'Confirmação registrada!']);
+                $guest = $form->get('guest')->getData();
+                $isConfirmed = $form->get('is_confirmed')->getData();
+                $companionsNumber = $form->get('companions_number')->getData();
+                $companionsListJson = $form->get('companions_list')->getData();
+                $message = $form->get('message')->getData();
+
+                $companionsList = !empty($companionsListJson) ? json_decode($companionsListJson, true) : [];
+
+                $this->guestUseCase->handleGuestConfirmation(
+                    $guest,
+                    $isConfirmed,
+                    $companionsNumber,
+                    $companionsList,
+                    $message,
+
+                );
+
+                return new JsonResponse(['success' => true, 'message' => 'Confirmação registrada!']);
+            }
+
+            return new JsonResponse([
+                'success' => false,
+                'errors' => (string) $form->getErrors(true, false)
+            ], 400);
+
+        }catch (\Exception $exception){
+
+            return new JsonResponse([
+                'success' => false,
+                'errors' => (string) $exception->getMessage(),
+            ], 400);
         }
-
-        return new JsonResponse([
-            'success' => false,
-            'errors' => (string) $form->getErrors(true, false)
-        ], 400);
     }
 }
