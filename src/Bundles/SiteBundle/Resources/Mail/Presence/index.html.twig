@@ -12,7 +12,10 @@
         align="center"
         style="
             background: #849578;
-            border-radius: 220px;
+            background-image: url({{ absolute_url(asset('imgs/asfalt-light.png')) }});
+            background-size: cover;
+            background-position: center;
+            border-radius: 45px;
         "
     >
         <tr>
@@ -45,6 +48,16 @@
         </tr>
 
         <tr>
+            <td style="padding: 40px 5px 0; text-align: center">
+                {% if confirmed %}
+                    <p style="text-align: center; color: limegreen; font-weight: 600; font-size: 16px;">Sim</p>
+                {% else %}
+                    <p style="text-align: center; color: red; font-weight: 600; font-size: 16px;">Não</p>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
             <td style="padding: 5px;">
                 <p style="text-align: center; color: #fff; font-size: 14px;">Convidado:</p>
 
@@ -67,9 +80,13 @@
                 <p style="text-align: center; color: #fff; font-size: 14px;">Lista de acompanhantes:</p>
 
                 {% if companions|length > 0 %}
-                    <ul style="">
+                    <ul style="padding: 0;">
                         {% for companion in companions %}
-                            <li style="text-align: center; color: #fff;">{{ companion.name }}
+                            <li style="text-align: center; margin: 0; color: #fff; list-style: none;">
+
+                                <span style="font-size: 16px;font-weight: 600;">
+                                    {{ companion.name }}
+                                </span>
 
                                 {% if companion.child %}
                                     <i>(Criança)</i>
