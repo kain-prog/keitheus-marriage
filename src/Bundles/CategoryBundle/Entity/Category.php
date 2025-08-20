@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[Groups(['category'])]
 #[ORM\HasLifecycleCallbacks()]
@@ -23,6 +24,7 @@ class Category
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $name;
 
+    #[Ignore]
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'categories')]
     private Collection $products;
 

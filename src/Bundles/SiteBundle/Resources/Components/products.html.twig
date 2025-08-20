@@ -1,8 +1,21 @@
-<turbo-frame class="my-16 flex gap-6 justify-center flex-wrap" id="products">
-    {% for product in products[:6] %}
+<turbo-frame
+    id="products"
+    class="my-16 flex gap-6 justify-center flex-wrap"
+    data-action="turbo:frame-load->product#onFrameLoad"
+    data-product-target="frame productsContainer"
+    data-product-products-value='{{ productsJson|raw }}'
+    data-product-total-products-value="{{ products|length }}"
+>
+    <div
+        data-product-target="state"
+        data-product-products-value='{{ productsJson|raw }}'
+        data-product-total-products-value="{{ products|length }}"
+        class="hidden"
+    ></div>
+
+    {% for product in products|slice(0, 6) %}
         <div class="px-12 py-8 bg-slate-50 w-full max-w-[380px] flex flex-col justify-center items-center shadow product-card" id="{{ product.id }}">
             <img class="max-h-[95px] md:max-h-[160px] rounded mb-4 md:mb-8" src="/uploads/{{ product.thumbnail }}" alt="{{ product.name }}" />
-
             <div class="w-full">
                 <h3 class="text-md md:text-xl text-center font-semibold marcellus w-content">{{ product.name }}</h3>
                 <p class="text-xs md:text-sm text-center marcellus text-slate-600 mb-3 md:mb-6">{{ product.shortDescription }}</p>
@@ -15,7 +28,9 @@
                     </div>
                 {% endif %}
 
-                <h2 class="text-center text-xl md:text-4xl my-5 marcellus">{{ product.price|format_currency('BRL', locale='pt_BR') }}</h2>
+                <h2 class="text-center text-xl md:text-4xl my-5 marcellus">
+                    {{ product.price|format_currency('BRL', locale='pt_BR') }}
+                </h2>
 
                 {% if product.isPresented %}
                     <a class="select-none opacity-60 m-auto max-w-[190px] md:w-full md:max-w-full cursor-default block marcellus py-2 rounded text-slate-900 bg-slate-200 border border-slate-300 hover:bg-slate-300 text-center transition duration-150 ">
@@ -33,8 +48,13 @@
     {% endfor %}
 </turbo-frame>
 
-<div class="flex justify-center" id="load-more-container" data-target="product.loadMoreButton">
-    <button id="load-more" class="py-2 px-8 mb-16 text-slate-900 bg-slate-200 rounded-lg border border-slate-300 hover:bg-slate-300 text-center transition duration-150" data-action="click->product#loadMore" {% if products|length <= 6 %} style="display: none;" {% endif %}>
+<div class="flex justify-center text-center">
+    <button id="load-more"
+            class="py-2 px-8 mb-16 text-slate-900 bg-slate-200 rounded-lg border border-slate-300 hover:bg-slate-300 text-center transition duration-150"
+            data-product-target="loadMoreButton"
+            data-action="product#loadMore"
+        {% if products|length <= 6 %} style="display:none" {% endif %}
+    >
         Ver mais
     </button>
 </div>
