@@ -15,13 +15,13 @@ export default class extends Controller {
         const submitButton = form.querySelector("#confirm-btn");
 
         const disableBtn = () => {
-            submitButton.classList.remove("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+            submitButton.classList.remove("text-zinc-700 bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
             submitButton.classList.add("cursor-normal", "bg-zinc-100", "text-200");
             submitButton.setAttribute("disabled", "true");
         };
         const enableBtn = () => {
-            submitButton.classList.add("bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
-            submitButton.classList.remove("cursor-normal", "bg-zinc-100", "text-200");
+            submitButton.classList.add("text-zinc-700 bg-zinc-300", "cursor-pointer", "hover:text-gray-500", "hover:bg-zinc-200");
+            submitButton.classList.remove("text-zinc-300 cursor-normal", "bg-zinc-100", "text-200");
             submitButton.removeAttribute("disabled"); // << importante
         };
 
