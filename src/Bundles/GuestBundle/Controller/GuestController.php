@@ -45,8 +45,9 @@ class GuestController extends AbstractController
 
                 $guest = $form->get('guest')->getData();
                 $isConfirmed = $form->get('is_confirmed')->getData();
-                $companionsNumber = $form->get('companions_number')->getData();
-                $companionsListJson = $form->get('companions_list')->getData();
+                $guestNotCome = $form->get('guest_not_come')->getData();
+//                $companionsNumber = $form->get('companions_number')->getData();
+//                $companionsListJson = $form->get('companions_list')->getData();
                 $message = $form->get('message')->getData();
 
                 $companionsList = !empty($companionsListJson) ? json_decode($companionsListJson, true) : [];
@@ -54,8 +55,9 @@ class GuestController extends AbstractController
                 $this->guestUseCase->handleGuestConfirmation(
                     $guest,
                     $isConfirmed,
-                    $companionsNumber,
-                    $companionsList,
+                    $guestNotCome,
+//                    $companionsNumber,
+//                    $companionsList,
                     $message,
 
                 );

@@ -25,6 +25,9 @@ class Guest
     #[ORM\Column(type: 'boolean', nullable: false)]
     private bool $is_confirmed = false;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $guestNotCome = null;
+
     #[ORM\Column(type: 'integer', nullable: false)]
     private int $companions_number = 0;
 
@@ -77,6 +80,16 @@ class Guest
     public function setIsConfirmed(bool $is_confirmed): void
     {
         $this->is_confirmed = $is_confirmed;
+    }
+
+    public function getGuestNotCome(): ?string
+    {
+        return $this->guestNotCome;
+    }
+
+    public function setGuestNotCome(?string $guestNotCome): void
+    {
+        $this->guestNotCome = $guestNotCome;
     }
 
     public function getCompanionsNumber(): int

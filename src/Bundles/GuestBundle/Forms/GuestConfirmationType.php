@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -32,23 +33,33 @@ class GuestConfirmationType extends AbstractType
                     'class' => 'form-control focus:outline-gray-400 marcellus'
                 ]
             ])
-            ->add('companions_number', IntegerType::class, [
-                'label' => 'Número de Acompanhantes:',
-                'mapped' => false,
-                'required' => true,
-                'attr' => [
-                    'placeholder' => '0, 1, 2...',
-                    'class' => 'w-full border border-gray-300 rounded-md p-1 mt-1 focus:outline-gray-400 marcellus',
-                ],
-            ])
-            ->add('companions_list', HiddenType::class, [
+            ->add('guest_not_come', TextType::class, [
+                'label' => 'Caso algum desses convidados não possam comparecer, digite o nome aqui:',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'data-companions-target' => 'hidden',
-                    'id' => 'guest_confirmation_companions_list',
+                    'id' => 'guest_not_come',
+                    'placeholder' => 'Digite o nome de quem não poderá comparecer com você.',
+                    'class' => 'px-2 w-full border border-gray-300 rounded-md p-1 mt-1 focus:outline-gray-400 marcellus',
                 ],
             ])
+//            ->add('companions_number', IntegerType::class, [
+//                'label' => 'Número de Acompanhantes:',
+//                'mapped' => false,
+//                'required' => true,
+//                'attr' => [
+//                    'placeholder' => '0, 1, 2...',
+//                    'class' => 'w-full border border-gray-300 rounded-md p-1 mt-1 focus:outline-gray-400 marcellus',
+//                ],
+//            ])
+//            ->add('companions_list', HiddenType::class, [
+//                'mapped' => false,
+//                'required' => false,
+//                'attr' => [
+//                    'data-companions-target' => 'hidden',
+//                    'id' => 'guest_confirmation_companions_list',
+//                ],
+//            ])
             ->add('is_confirmed', ChoiceType::class, [
                 'label' => 'Confirma presença?',
                 'choices' => [

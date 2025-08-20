@@ -33,6 +33,15 @@ export default class extends Controller {
 
         this.isOpen = false;
         this.menuTarget.classList.add("hidden");
+
+
+        const inputGuestNotCome = document.querySelector('#div-not-come');
+
+        if(value || value !== ""){
+            inputGuestNotCome.classList.remove('hidden');
+        }else{
+            inputGuestNotCome.classList.add('hidden');
+        }
     }
 
     toggle(event) {

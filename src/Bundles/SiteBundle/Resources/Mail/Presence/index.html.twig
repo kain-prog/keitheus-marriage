@@ -58,43 +58,54 @@
 
         </tr>
 
-        <tr>
-            <td style="padding: 5px">
-                <p style="text-align: center; color: #fff; font-size: 14px;">Acompanhantes:</p>
+        {% if not_come %}
+            <tr>
+                <td style="padding: 5px;">
+                    <p style="text-align: center; color: #fff; font-size: 14px;">Não poderá comparecer:</p>
 
-                <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">{{ companions_number }}</p>
-            </td>
+                    <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">{{ not_come }}</p>
+                </td>
 
-        </tr>
+            </tr>
+        {% endif %}
 
-        <tr>
-            <td style="padding: 5px;">
-                <p style="text-align: center; color: #fff; font-size: 14px;">Lista de acompanhantes:</p>
+{#        <tr>#}
+{#            <td style="padding: 5px">#}
+{#                <p style="text-align: center; color: #fff; font-size: 14px;">Acompanhantes:</p>#}
 
-                {% if companions|length > 0 %}
-                    <ul style="padding: 0;">
-                        {% for companion in companions %}
-                            <li style="text-align: center; margin: 0; color: #fff; list-style: none;">
+{#                <p style="text-align: center; color: #fff; font-weight: 600; font-size: 16px;">{{ companions_number }}</p>#}
+{#            </td>#}
 
-                                <span style="font-size: 16px;font-weight: 600;">
-                                    {{ companion.name }}
-                                </span>
+{#        </tr>#}
 
-                                {% if companion.child %}
-                                    <i>(Criança)</i>
-                                {% else %}
-                                    <i>(Adulto)</i>
-                                {% endif %}
+{#        <tr>#}
+{#            <td style="padding: 5px;">#}
+{#                <p style="text-align: center; color: #fff; font-size: 14px;">Lista de acompanhantes:</p>#}
 
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p style="text-align: center; color: #fff; font-weight: 600">Nenhum.</p>
-                {% endif %}
-            </td>
+{#                {% if companions|length > 0 %}#}
+{#                    <ul style="padding: 0;">#}
+{#                        {% for companion in companions %}#}
+{#                            <li style="text-align: center; margin: 0; color: #fff; list-style: none;">#}
 
-        </tr>
+{#                                <span style="font-size: 16px;font-weight: 600;">#}
+{#                                    {{ companion.name }}#}
+{#                                </span>#}
+
+{#                                {% if companion.child %}#}
+{#                                    <i>(Criança)</i>#}
+{#                                {% else %}#}
+{#                                    <i>(Adulto)</i>#}
+{#                                {% endif %}#}
+
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                {% else %}#}
+{#                    <p style="text-align: center; color: #fff; font-weight: 600">Nenhum.</p>#}
+{#                {% endif %}#}
+{#            </td>#}
+
+{#        </tr>#}
 
         <tr>
             <td style="padding: 5px 5px 40px">

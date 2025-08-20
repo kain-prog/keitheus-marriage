@@ -28,7 +28,7 @@ readonly class GuestUseCase
      * @throws ExceptionInterface
      * @throws \Exception
      */
-    public function handleGuestConfirmation(?Guest $guest, bool $isConfirmed, int $companions_number, ?array $companions_list, ?string $message): void
+    public function handleGuestConfirmation(?Guest $guest, bool $isConfirmed, ?string $guestNotCome, ?string $message): void
     {
         if (!$guest) {
             throw new \InvalidArgumentException('Convidado inválido.');
@@ -39,22 +39,23 @@ readonly class GuestUseCase
         }
 
         $guest->setIsConfirmed($isConfirmed);
-        $guest->setCompanionsNumber($companions_number);
+//        $guest->setCompanionsNumber($companions_number);
+        $guest->setGuestNotCome($guestNotCome);
         $guest->setMessage($message);
         $guest->setResponse(true);
 
-        foreach ($companions_list as $companion) {
-
-            $newCompanion = new Companion();
-
-            $newCompanion->setName($companion['name']);
-            $newCompanion->setIsChild($companion['child']);
-            $newCompanion->addGuest($guest);
-
-            $guest->addCompanion($newCompanion);
-
-            $this->companionRepository->save($newCompanion);
-        }
+//        foreach ($companions_list as $companion) {
+//
+//            $newCompanion = new Companion();
+//
+//            $newCompanion->setName($companion['name']);
+//            $newCompanion->setIsChild($companion['child']);
+//            $newCompanion->addGuest($guest);
+//
+//            $guest->addCompanion($newCompanion);
+//
+//            $this->companionRepository->save($newCompanion);
+//        }
 
         $this->guestRepository->save($guest);
 
@@ -63,8 +64,9 @@ readonly class GuestUseCase
                 'title' => 'KeiTheus - Casamento',
                 'confirmed' => $isConfirmed,
                 'name' => $guest->getName(),
-                'companions_number' => $guest->getCompanionsNumber(),
-                'companions' => $companions_list ?? [],
+                'not_come' => $guestNotCome,
+//                'companions_number' => $guest->getCompanionsNumber(),
+//                'companions' => $companions_list ?? [],
                 'message' => $message,
             ]);
 
