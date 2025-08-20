@@ -1,4 +1,4 @@
-<div data-controller="category" id="categories" class="py-6 sm:py-0 flex gap-6 w-full items-center justify-center">
+<div data-controller="category" id="categories" class="py-6 sm:py-0 flex gap-6 w-full items-center sm:justify-center">
     {% set rawCategories = app.request.attributes.get('categories') ?? '' %}
     {% set currentCategories = rawCategories | split(',') %}
 
