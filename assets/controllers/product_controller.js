@@ -78,7 +78,9 @@ export default class extends Controller {
         const thumb = this.escape(String(product?.thumbnail ?? ""));
         const id = this.escape(String(product?.id ?? ""));
         const paymentUrl = this.escape(String(product?.paymentUrl ?? "#"));
-        const isPresented = !!product?.isPresented;
+        const isPresented = !!product?.is_presented;
+
+        console.log(isPresented, 'aaaaaaaaaaaa');
 
         const categoriesHTML =
             Array.isArray(product?.categories) && product.categories.length
