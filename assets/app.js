@@ -10,7 +10,7 @@ function initSwiper() {
         new Swiper('.swiper', {
 
             loop: true,
-            effect: "slide",
+            effect: "fade",
             speed:1000,
             autoplay: {
                 delay: 3000
